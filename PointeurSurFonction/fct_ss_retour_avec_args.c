@@ -1,0 +1,16 @@
+void afficherBonjour(char * nom)
+{
+     printf("Bonjour %s\n",nom);
+}
+
+int main (void)
+{
+     void (*pointeurSurFonction)(char *);         /*déclaration du pointeur*/
+     pointeurSurFonction = afficherBonjour;       /*Initialisation*/
+
+     (*pointeurSurFonction)("zero");              /*Appel de la fonction*/
+
+     return 0;
+}
+
+//Resultat : Bonjour zero
