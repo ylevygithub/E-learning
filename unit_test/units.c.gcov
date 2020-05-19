@@ -1,0 +1,90 @@
+        -:    0:Source:units.c
+        -:    0:Graph:units.gcno
+        -:    0:Data:units.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    0:Source is newer than graph
+        -:    1:#include <criterion/criterion.h>
+        -:    2:
+        2:    3:char *my_strcat(char *dest, char const *src)
+        -:    4:{
+        2:    5:    int i = 0;
+        2:    6:    int j = 0;
+        2:    7:    while (dest[i] != '\0')
+    #####:    8:        i++;
+       12:    9:    while (src[j] != '\0') {
+       10:   10:        dest[i + j] = src[j];
+       10:   11:        j++;
+        -:   12:    }
+        2:   13:    dest[i + j] = '\0';
+        2:   14:    return (dest);
+        -:   15:}
+        -:   16:
+        2:   17:int my_strcmp(char *s1, char *s2)
+        -:   18:{
+        2:   19:    int i = 0;
+        7:   20:    while (s1[i])
+        -:   21:    {
+        6:   22:        if (s1[i] != s2[i])
+        1:   23:            return (s1[i] - s2[i]);
+        5:   24:        i++;
+        -:   25:    }
+        1:   26:    i = 0;
+        6:   27:    while (s2[i])
+        -:   28:    {
+        5:   29:        if (s1[i] != s2[i])
+    #####:   30:            return (s1[i] - s2[i]);
+        5:   31:        i++;
+        -:   32:    }
+        1:   33:    return (0);
+        -:   34:}
+        -:   35:
+        2:   36:Test(cat1, fixed_inputs)
+        -:   37:{
+        1:   38:    char str1[100] = "\0";
+        1:   39:    char *str2 = "world";
+        1:   40:    char *res = my_strcat(str1, str2);
+        -:   41:    
+        -:   42:
+       1*:   43:    cr_expect( my_strcmp(res, "world") == 0, "Adding 2 and 2 failed");
+        1:   44:}
+------------------
+cat1_fixed_inputs_impl:
+        1:   36:Test(cat1, fixed_inputs)
+        -:   37:{
+        1:   38:    char str1[100] = "\0";
+        1:   39:    char *str2 = "world";
+        1:   40:    char *res = my_strcat(str1, str2);
+        -:   41:    
+        -:   42:
+       1*:   43:    cr_expect( my_strcmp(res, "world") == 0, "Adding 2 and 2 failed");
+        1:   44:}
+------------------
+cat1_fixed_inputs_jmp:
+        1:   36:Test(cat1, fixed_inputs)
+------------------
+        -:   45:
+        2:   46:Test(cat, fixed_input)
+        -:   47:{
+        1:   48:    char str1[100] = "\0";
+        1:   49:    char *str2 = "world";
+        1:   50:    char *res = my_strcat(str1, str2);
+        -:   51:
+        -:   52:
+       2*:   53:    cr_expect( my_strcmp(res, "nkitout") == 0, "Adding 2 and 2 failed");
+        1:   54:}
+------------------
+cat_fixed_input_impl:
+        1:   46:Test(cat, fixed_input)
+        -:   47:{
+        1:   48:    char str1[100] = "\0";
+        1:   49:    char *str2 = "world";
+        1:   50:    char *res = my_strcat(str1, str2);
+        -:   51:
+        -:   52:
+       2*:   53:    cr_expect( my_strcmp(res, "nkitout") == 0, "Adding 2 and 2 failed");
+        1:   54:}
+------------------
+cat_fixed_input_jmp:
+        1:   46:Test(cat, fixed_input)
+------------------
